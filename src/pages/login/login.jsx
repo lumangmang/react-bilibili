@@ -12,12 +12,13 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons';
 
 import './login.less'
 import logo from './images/logo.jpg'
+import api from '../../api'
 
 const Item = Form.Item
 
 const Login = (props) => {
     const onFinish = ({username, password}) => {
-        alert(`${username},${password}`)
+        api.login.login(username, password)
     }
 
     const onFinishFailed = (error) => {

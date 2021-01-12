@@ -10,7 +10,10 @@
 import ajax from "../ajax";
 
 function login(username, password) {
-    console.log('login');
+    ajax.post('/login', {
+        username,
+        password,
+    })
 }
 
 function logout() {
