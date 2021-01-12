@@ -13,6 +13,8 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import './login.less'
 import logo from './images/logo.jpg'
 
+const Item = Form.Item
+
 const Login = (props) => {
     const onFinish = ({username, password}) => {
         alert(`${username},${password}`)
@@ -35,14 +37,11 @@ const Login = (props) => {
                     onFinish={onFinish}
                     onFinishFailed={onFinishFailed}
                 >
-                    <Form.Item
+                    <Item
                         name={'username'}
                         rules={[
                             {
                                 required: true,
-                                message: '账户不能为空'
-                            },
-                            {
                                 pattern: /^[a-zA-Z0-9_]+$/,
                                 message: '用户名由字母、数字和下划线组成'
                             }
@@ -53,12 +52,12 @@ const Login = (props) => {
                             placeholder={'username'}
                             maxLength={12}
                         />
-                    </Form.Item>
-                    <Form.Item
+                    </Item>
+                    <Item
                         name="password"
                         rules={[{
                             required: true,
-                            message: 'please input your password'
+                            message: '密码不能为空'
                         }]}
                     >
                         <Input
@@ -66,8 +65,8 @@ const Login = (props) => {
                             type="password"
                             placeholder="password"
                         />
-                    </Form.Item>
-                    <Form.Item>
+                    </Item>
+                    <Item>
                         <Button
                             className={'login-form-button'}
                             type='primary'
@@ -75,7 +74,7 @@ const Login = (props) => {
                         >
                             登 录
                         </Button>
-                    </Form.Item>
+                    </Item>
                 </Form>
             </div>
         </div>
