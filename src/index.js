@@ -7,3 +7,14 @@
  *
  */
 
+import React from 'react';
+import ReactDom from 'react-dom';
+import App from "./App";
+
+ReactDom.render(
+    // 严格模式
+    <React.StrictMode>
+        <App />
+    </React.StrictMode>,
+    document.getElementById('root')
+);
