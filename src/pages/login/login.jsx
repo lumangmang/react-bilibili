@@ -13,10 +13,13 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import './login.less'
 import logo from './images/logo.jpg'
 
-const Login = () => {
+const Login = (props) => {
+    const onFinish = ({username, password}) => {
+        alert(`${username},${password}`)
+    }
 
-    const onFinish = (values) => {
-        console.log('Received values of form: ', values);
+    const onFinishFailed = (error) => {
+        console.log('Received error of form: ', error);
     }
 
     return (<div className={'login'}>
@@ -30,19 +33,33 @@ const Login = () => {
                     name={'login-normal'}
                     className={'login-form'}
                     onFinish={onFinish}
+                    onFinishFailed={onFinishFailed}
                 >
                     <Form.Item
                         name={'username'}
-                        rules={[{required: true, message: 'please input your username'}]}
+                        rules={[
+                            {
+                                required: true,
+                                message: '账户不能为空'
+                            },
+                            {
+                                pattern: /^[a-zA-Z0-9_]+$/,
+                                message: '用户名由字母、数字和下划线组成'
+                            }
+                        ]}
                     >
                         <Input
                             prefix={<UserOutlined/>}
                             placeholder={'username'}
+                            maxLength={12}
                         />
                     </Form.Item>
                     <Form.Item
                         name="password"
-                        rules={[{required: true, message: 'please input your password'}]}
+                        rules={[{
+                            required: true,
+                            message: 'please input your password'
+                        }]}
                     >
                         <Input
                             prefix={<LockOutlined className="site-form-item-icon"/>}
