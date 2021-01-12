@@ -1,25 +1,9 @@
-import logo from './logo.svg';
-import './App.css';
+/**
+ * react-bilibili.
+ * Create by Devin on 2021/1/12.
+ *
+ * Copyright (c) 2021-present, Devin.
+ * All rights reserved.
+ *
+ */
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
-
-export default App;
