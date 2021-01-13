@@ -16,10 +16,11 @@ import api from '../../api'
 
 const Item = Form.Item
 
-const Login = (props) => {
-    const onFinish = ({username, password}) => {
-        api.login.login(username, password)
-    }
+const Login = () => {
+    const onFinish = (async ({username, password}) => {
+        const result = await api.login.login(username, password)
+        console.log(' -------- ', result);
+    })
 
     const onFinishFailed = (error) => {
         console.log('Received error of form: ', error);

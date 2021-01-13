@@ -7,20 +7,17 @@
  *
  */
 
-import ajax from "../ajax";
+import http from '../http'
 
-function login(username, password) {
-    ajax.post('/login', {
-        username,
-        password,
-    })
-}
+/**
+ * 登陆
+ * @param username 账号
+ * @param password 密码
+ * @returns {Promise<AxiosResponse<any>>}
+ */
+const login = (username, password) => http.post('/login', {username, password})
 
-function logout() {
-    console.log('logout');
-}
-
+// eslint-disable-next-line
 export default {
     login,
-    logout
 }

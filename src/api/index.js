@@ -9,6 +9,7 @@
 
 import login from './login'
 
+// eslint-disable-next-line
 export default {
     login
 }

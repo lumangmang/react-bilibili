@@ -17,6 +17,7 @@ axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded'
 axios.defaults.transformRequest = data => qs.stringify(data)
 axios.defaults.retry = 2;
 axios.defaults.retryDelay = 5000;
+axios.defaults.baseURL = '/proxy'
 
 axios.defaults.validateStatus = status => {
     return /^(2|3)\d{2}$/.test(status.toString());
@@ -31,14 +32,13 @@ axios.interceptors.request.use((config) => {
 axios.interceptors.response.use((response) => {
     return response.data
 }, error => {
-    console.log(error.response);
     if (error.response) {
         return Promise.reject(error);
     } else {
         // 请求超时处理
         let config = error.config;
-        // If config does not exist or the retry option is not set, reject
-        if (!config || !config.retry) return Promise.reject(error);
+        // If config does not exist or the retry option is not set or window is offline, reject
+        if (!config || !config.retry || !window.navigator.onLine) return Promise.reject(error);
         config.__retryCount = config.__retryCount || 0;
         // Check if we've maxed out the total number of retries
         if (config.__retryCount >= config.retry) {
