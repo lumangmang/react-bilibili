@@ -10,9 +10,17 @@
 import ajax from "./ajax";
 import { message } from "antd";
 
-const post = async (url, data) => {
+const post = async (url, params) => {
     try {
-        return await ajax.post(url, data)
+        return await ajax.post(url, params)
+    } catch (error) {
+        message.error(error.message)
+    }
+}
+
+const get = async (url, params) => {
+    try {
+        return await ajax.get(url, {params})
     } catch (error) {
         message.error(error.message)
     }
@@ -21,4 +29,5 @@ const post = async (url, data) => {
 // eslint-disable-next-line
 export default {
     post,
+    get
 }

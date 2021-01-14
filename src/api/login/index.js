@@ -15,7 +15,7 @@ import http from '../http'
  * @param password 密码
  * @returns {Promise<AxiosResponse<any>>}
  */
-const login = (username, password) => http.post('/login', {username, password})
+const login = (username, password) => http.post('/users/login', {username, password})
 
 // eslint-disable-next-line
 export default {
